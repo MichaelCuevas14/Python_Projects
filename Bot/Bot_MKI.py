@@ -83,8 +83,13 @@ class Bot:
             Payment_info_button = browser.find_element_by_xpath(
                 '/html/body/div[1]/div[2]/div/div[2]/div[1]/div[1]/main/div[2]/div[2]/form/section/div/div[2]/div/div/button')
             Payment_info_button.click()
-            cvv = browser.find_element_by_id("credit-card-cvv")
-            cvv.send_keys(my_cvv)
+
+            try:
+                cvv = browser.find_element_by_id("credit-card-cvv")
+                cvv.send_keys(my_cvv)
+            except Exception as e:
+                print("No CC info required")
+
             Place_order = browser.find_element_by_xpath(
                 "/html/body/div[1]/div[2]/div/div[2]/div[1]/div[1]/main/div[2]/div["
                 "3]/div/section/div[3]/div[2]/button")
